@@ -48,6 +48,9 @@ VALUES(
     12,
     1 -- id do fornecedor Eletrônicos Tabajara
     );
+
+
+
 ```
 
 ## INSERT na tabela de Lojas
@@ -61,4 +64,47 @@ INSERT INTO lojas (nome) VALUES ('Bazar das Coisas');
 INSERT INTO lojas (nome) VALUES ('Americanas');
 
 
+```
+
+
+## INSERT na tabela Lojas-Produtos
+
+Esta é uma tabela intermediária (também conhecida como **tabela pivot**), ou seja, ela se relaciona com outras duas tabelas: **produtos** e **lojas** através de chaves estrangeiras.
+
+```sql
+INSERT INTO lojas_produtos(loja_id, produto_id, estoque) VALUES
+(2, 1, 20);
+
+-- Insira também:
+-- Senhor dos Anéis na loja Americanas, com estoque de 3
+-- TV Led no Shopping Zona Leste, com estoque 10
+-- Smartphone nas Casas Bahia, com estoque 5
+-- Smartphone na Americanas, com estoque 2
+INSERT INTO lojas_produtos (loja_id, produto_id, estoque)
+VALUES(
+    4,
+    4,
+    3 -- id do fornecedor Eletrônicos Tabajara
+    );
+
+INSERT INTO lojas_produtos (loja_id, produto_id, estoque)
+VALUES(
+    7,
+    2,
+    10
+    );
+
+INSERT INTO lojas_produtos (loja_id, produto_id, estoque)
+VALUES(
+    1,
+    1,
+    5
+    );
+
+INSERT INTO lojas_produtos (loja_id, produto_id, estoque)
+VALUES(
+    4,
+    1,
+    5
+    );
 ```
