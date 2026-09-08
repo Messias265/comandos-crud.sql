@@ -108,3 +108,26 @@ VALUES(
     5
     );
 ```
+
+---
+
+## UPDATE na tabela fornecedores
+
+```sql
+UPDATE fornecedores SET nome = 'Mundo dos Games'
+WHERE id = 2;
+```
+
+## UPDATE na tabela produtos
+
+```sql
+UPDATE produtos SET preco = 2999, quantidade = 5 WHERE id = 7;
+```
+
+## UPDATE na tabela lojas_produtos
+
+```sql
+UPDATE lojas_produtos SET estoque = 4 WHERE loja_id = 2 AND produto_id = 1; 
+
+-- SQL aceita operadores lógicos: AND (E), OR (OU), NOT (NÃO)
+```
