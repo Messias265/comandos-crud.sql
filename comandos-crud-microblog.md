@@ -101,3 +101,44 @@ INSERT INTO noticias (titulo, resumo, texto, imagem, destaque, usuario_id, categ
     3
 );
 ```
+
+## Alterando dados
+
+```sql
+UPDATE usuarios SET nome = 'perola'
+where id = 3;
+
+-- E-mail
+
+UPDATE usuarios SET email = 'perola@email.com'
+WHERE id = 3;
+
+-- tipo_usuario
+UPDATE usuarios SET tipo_usuario = 'admin'
+WHERE id = 1;
+
+-- categorias
+UPDATE categorias SET nome = 'Aprendizagem'
+WHERE id = 2;
+--
+UPDATE noticias SET titulo = 'Inteligência artificial obteve espaço no dia a dia'
+WHERE id = 1;
+-- não - para - SIM
+UPDATE noticias SET destaque = 'sim'
+WHERE id = 1;
+-- mudar categoria
+UPDATE noticias SET categoria_id = '1'
+WHERE id = 1;
+```
+
+
+## Excluir alguns DADOS
+
+```sql
+-- Excluindo noticia id 3 (inteligencia artificial, ja tinha no id 1)
+DELETE FROM noticias WHERE id = 3;
+-- Excluindo categoria aprendizagem, não correspondia nas noticias, elas são categoria tecnologia e entretenimento
+DELETE FROM categorias WHERE id = 2;
+--
+DELETE FROM usuarios WHERE id = 3;
+```
