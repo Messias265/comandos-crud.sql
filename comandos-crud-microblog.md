@@ -141,4 +141,8 @@ DELETE FROM noticias WHERE id = 3;
 DELETE FROM categorias WHERE id = 2;
 --
 DELETE FROM usuarios WHERE id = 3;
+
+
+-- 
 ```
+
