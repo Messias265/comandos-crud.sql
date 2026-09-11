@@ -2,6 +2,12 @@
 
 O comando `SELECT` é usado para **consultar dados armazenados nas tabelas do banco de dados**.
 
+
+
+
+
+
+
 ## SELECT básico: consultar todos os dados de uma tabela:
 
 ```sql
