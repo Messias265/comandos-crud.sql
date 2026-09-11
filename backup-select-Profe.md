@@ -355,9 +355,85 @@ SELECT
     p.preco,
     f.nome  fornecedor
 FROM produtos  p
-INNER JOIN fornecedores AS f
-    ON p.fornecedor_id = f.id;
+INNER JOIN fornecedores  f
+    ON p.fornecedor_id = f.id
 ```
 
+### JOIN com filtro
 
+Exibir somente os produtos com preço superior a R$ 1000
+mostrando também o nome de seus fornecedores
 
+```sql
+SELECT 
+    produtos.nome AS produto,
+    produtos.preco,
+    Fornecedores.nome AS fornecedor
+FROM produtos INNER JOIN fornecedores
+    ON produtos.fornecedor_id = fornecedores.id
+WHERE produtos.preco > 1000;
+```
+
+### Desafio: JOIN envolvendo 3 tabelas
+
+Objetivo: descobrir qual produto é vendido em qual loja e qual é seu estoque naquela loja
+
+```sql
+SELECT 
+    produtos.nome AS lojas_produtos,
+    lojas_produtos.estoque,
+    lojas.nome AS nome
+FROM lojas INNER JOIN lojas_produtos 
+  ON lojas.id = lojas_produtos.loja_id
+INNER JOIN produtos
+  ON produtos.id = lojas_produtos.produto_id;
+```
+```sql
+-- GABRIEL
+SELECT 
+    produtos.nome AS lojas_produtos,
+    lojas_produtos.estoque,
+    lojas.nome AS nome
+FROM produtos INNER JOIN lojas_produtos 
+  ON lojas.id = lojas_produtos.loja_id
+INNER JOIN lojas
+  ON produtos.id = lojas_produtos.produto_id;
+```
+
+```sql
+-- THIAGO (professor)
+SELECT 
+    produtos.nome AS lojas_produtos,
+    lojas_produtos.estoque,
+    lojas.nome AS nome
+FROM lojas_produtos INNER JOIN produtos
+  ON lojas.id = lojas_produtos.loja_id
+INNER JOIN lojas
+  ON produtos.id = lojas_produtos.produto_id;
+```
+
+```sql
+-- RESULTADO DA COPILOT.IA
+SELECT
+    l.nome AS loja,
+    p.nome AS produto,
+    lp.estoque
+FROM lojas_produtos lp
+INNER JOIN lojas l
+    ON lp.loja_id = l.id
+INNER JOIN produtos p
+    ON lp.produto_id = p.id
+ORDER BY l.nome, p.nome;
+```
+
+```sql
+SELECT 
+    produtos.nome AS produto,
+    lojas.nome AS loja,
+    lojas_produtos.estoque
+FROM lojas_produtos
+INNER JOIN lojas
+    ON lojas_produtos.loja_id = lojas.id
+INNER JOIN produtos
+    ON lojas_produtos.produto_id = produtos.id;
+```
